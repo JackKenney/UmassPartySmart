@@ -7,7 +7,7 @@ var express = require('express'),
     io = require('socket.io')(http),
 //database
     mysql = require( 'mysql' ),
-    connection = mysql.createConnection('mysql://root:sqlroot123@localhost/test');
+    connection = mysql.createConnection('mysql://root:password@localhost/Parties');
 //server listens on port 1337
 http.listen(1337);
 
@@ -20,13 +20,21 @@ io.on('connection', function(socket) {
   console.log('Connection to Client Established!');
 
   //when the display button is clicked, this request is sent to retreive current database information.
-  socket.on('query-postData', function(req) {
-    console.log('Query for Post Data Received!');
+  socket.on('registration', function(data) { //{first_name,last_name,student_id,phone,address,date,time}
+    console.log('Registration request recieved!');
+    var sql = "INSERT INTO parties (student_id, first_name, last_name, phone, address, date, time) VALUES(";
+    sql += "\"" +data.student_id+ "\",";
+    sql += "\"" +data.first_name+ "\",";
+    sql += "\"" +data.last_name+ "\",";
+    sql += "\"" +data.phone+ "\",";
+    sql += "\"" +data.address+ "\",";
+    sql += "\"" +data.date+ "\",";
+    sql += "\"" +data.time+ "\");";
     connection.query(req.sql, function(err,rows,fields) {
       if(err) io.emit('info', err);
       else {
-        io.emit('query-responseData', rows);
-        console.log("Server postData Query Response Emitted!");
+        io.emit('resgistration-confirmation', rows);
+        console.log("Registration Response Recieved By Server");
       }
     });
   });

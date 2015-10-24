@@ -34,3 +34,21 @@ Your Web Server is now running at http://localhost:1337
 NOTE: some commands may require root privelages, i.e. sudo. See 1,2, and 4
 
 Credits: DrewMcArthur
+
+
+
+RSA Key fingerprint
+75:8f:a9:47:a7:fd:75:89:6b:ba:a2:41:72:fe:09:90 
+
++--[ RSA 4096]----+
+|                 |
+|                 |
+|          . .    |
+|      .  . . +   |
+|     E oS   + o  |
+|      *    o +. .|
+|       +  . o...o|
+|        +... ...o|
+|       ..o.o+.  .|
++-----------------+
+
