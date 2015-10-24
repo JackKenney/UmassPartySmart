@@ -22,12 +22,16 @@ io.on('connection', function(socket) {
   //when the display button is clicked, this request is sent to retreive current database information.
   socket.on('registration', function(data) { //{first_name,last_name,student_id,phone,address,date,time}
     console.log('Registration request recieved!');
-    var sql = "INSERT INTO parties (student_id, first_name, last_name, phone, address, date, time) VALUES(";
+    var sql = "INSERT INTO parties (student_id, first_name, last_name, phone, phone2, address, address2, city, zipcode, date, time) VALUES(";
     sql += "\"" +data.student_id+ "\",";
     sql += "\"" +data.first_name+ "\",";
     sql += "\"" +data.last_name+ "\",";
     sql += "\"" +data.phone+ "\",";
+    sql += "\"" +data.phone2+ "\",";
     sql += "\"" +data.address+ "\",";
+    sql += "\"" +data.address2+ "\",";
+    sql += "\"" +data.city+ "\",";
+    sql += "\"" +data.zip+ "\",";
     sql += "\"" +data.date+ "\",";
     sql += "\"" +data.time+ "\");";
     connection.query(req.sql, function(err,rows,fields) {
