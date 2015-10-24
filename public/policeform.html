@@ -1,0 +1,41 @@
+<!doctype html>
+<html>
+  <head>
+    <title></title>
+    <link rel="stylesheet" type="text/css" href="./style.css"></link>
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.0/jquery.min.js"></script>
+    <script src="//code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
+    <script src="/socket.io/socket.io.js"></script>
+  </head>
+  <body>
+    <br>
+    <div id="postForm">
+     <legend>Address of Party</legend>
+     <br>
+      <br>
+      <input id="paddress" type="text" maxlength="200" placeholder="Address Line 1" name="Address"/>
+      <br>
+      <input id="paddress2" type="text" maxlength="200" placeholder="Address Line 2(Optional)" name="Address 2"/>
+      <br>
+      <input id="city" type="text" maxlength="20" placeholder="City" name="City" />
+      <br>
+      <input id="state" type="text" maxlength="15" placeholder="State" name="State" />
+      <br>
+      <input id="zipcode" type="text" maxlength="15" placeholder="Zipcode" name="Zipcode"/>
+      <br>
+      <input id="submit" class="button" type="submit" value="Submit">
+    </div>
+    <br>
+    <br>
+    Name:
+    <br>
+    <input id ="pname" type = "text" maxlength="200" name="Party Thrower Name" readonly/>
+    <br>
+    Address:
+    <br>
+    <input id ="returnaddress" type = "text" maxlength="200" name="Party Address" readonly/>
+    <br>
+    <br>
+    <script src="script.js"></script>
+  </body>
+</html>
