@@ -1,5 +1,3 @@
-UmassPartySmart
-
 NODE-EXPRESS WEB SERVER SETUP
 ====================================================
 
@@ -26,3 +24,13 @@ in directory, run npm install to install dependencies
 run server with nodejs app.js
 
  > nodejs app.js
+
+…?
+
+Profit!
+
+Your Web Server is now running at http://localhost:1337
+
+NOTE: some commands may require root privelages, i.e. sudo. See 1,2, and 4
+
+Credits: DrewMcArthur
