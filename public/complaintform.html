@@ -1,0 +1,35 @@
+<!doctype html>
+<html>
+  <head>
+    <title></title>
+    <link rel="stylesheet" type="text/css" href="./style.css"></link>
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.0/jquery.min.js"></script>
+    <script src="//code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
+    <script src="/socket.io/socket.io.js"></script>
+  </head>
+  <body>
+    <br>
+    <div id="postForm">
+     <legend>Complaint Form</legend>
+     <br>
+     Your Address:
+      <br>
+      <input id="yaddress" type="text" maxlength="200" placeholder="Address Line 1" name="Address" required/>
+      <br>
+      <input id="yaddress2" type="text" maxlength="200" placeholder="Address Line 2(Optional)" name="Address 2"/>
+      <br>
+      <input id="ycity" type="text" maxlength="20" placeholder="City" name="City" required/>
+      <br>
+      <input id="ystate" type="text" maxlength="15" placeholder="State" name="State" required/>
+      <br>
+      <input id="yzipcode" type="text" maxlength="15" placeholder="Zipcode" name="Zipcode" required/>
+      <br>
+      <br>
+
+      <input id="ysubmit" class="button" type="submit" value="Submit">
+    </div>
+    <br>
+    <br>
+    <script src="script.js"></script>
+  </body>
+</html>
