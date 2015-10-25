@@ -9,6 +9,12 @@ h5 {
 	color:Red;
 	visibility: hidden;
 }
+table {
+	border: 1px solid black;
+	text-align:left;
+	background-color:gray;
+	color:white;
+}
 .required:after { content:" *"; }
 @import url(http://fonts.googleapis.com/css?family=Open+Sans:700);
 #cssmenu {
