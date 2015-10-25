@@ -6,6 +6,8 @@
     <script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.0/jquery.min.js"></script>
     <script src="//code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
     <script src="/socket.io/socket.io.js"></script>
+    <script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=false"></script>
+    <script src="/app.js"></script>
   </head>
   <body>
     <br>
@@ -25,7 +27,19 @@
       <input id="yzipcode" type="text" maxlength="15" placeholder="Zipcode" name="Zipcode" required/>
       <br>
       <br>
-
+     Address of Party:
+      <br>
+      <input id="partyaddress" type="text" placeholder="Address Line 1" name ="Address" required/>
+      <br>
+      <input id="partyaddress2" type="text" maxlength="200" placeholder="Address Line 2(Optional)" name="Address 2"/>
+      <br>
+      <input id="partycity" type="text" maxlength="20" placeholder="City" name="City" required/>
+      <br>
+      <input id="partystate" type="text" maxlength="15" placeholder="State" name="State" required/>
+      <br>
+      <input id="partyzipcode" type="text" maxlength="15" placeholder="Zipcode" name="Zipcode" required/>
+      <br>
+      <br>
       <input id="ysubmit" class="button" type="submit" value="Submit">
     </div>
     <br>
