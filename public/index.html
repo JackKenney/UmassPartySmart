@@ -8,6 +8,9 @@
     <script src="/socket.io/socket.io.js"></script>
   </head>
   <body>
+  <ul class="navbar">
+  <li><a href="complaintform.html">Complaint Form</a>
+  </ul>
     <br>
     <div id="postForm">
      <legend>Personal Information:</legend>
@@ -32,6 +35,18 @@
       <input id="phone_number" type="text" name="Phone Number" placeholder="Phone Number" maxlength="11" required/>
       <br>
       <br>
+      Phone Provider:
+      <br>
+      <select>
+      <option id="tmobile" value="T-Mobile">T-Mobile</option>
+      <option id="verizon" value="Verizon" >Verizon</option>
+      <option id="att" value="AT&T">AT&T</option>
+      <option id="sprint" value="Sprint">Sprint</option>
+      <option id="virginmobile" value="Virgin Mobile">Virgin Mobile</option>
+      <option id="boostmobile" value="Boost Mobile">Boost Mobile</option>
+      </select>
+      <br>
+      <br>
      Additional Phone Number(Optional):
       <br>
       <input id="phone_number2" type="text" name="Phone Number2" placeholder="Phone Number 2" maxlength="11" />
@@ -47,7 +62,7 @@
       <br>
       <input id="state" type="text" maxlength="15" placeholder="State" name="State" required/>
       <br>
-      <input id="zipcode" type="text" maxlength="15" placeholder="Zipcode" name="Zipcode" required/>
+      <input id="zipcode" type="text" maxlength="5" placeholder="Zipcode" name="Zipcode" required/>
       <br>
       <br>
      Date of Party:
