@@ -37,26 +37,34 @@ io.on('connection', function(socket) {
   //when the display button is clicked, this request is sent to retreive current database information.
   socket.on('registration', function(data) { //{first_name,last_name,student_id,phone,address,date,time}
     console.log('Registration request recieved!');
-    console.log(data.date);
-    var sql = "INSERT INTO Parties (student_id, first_name, last_name, phone, phone2, address, address2, city, state, zipcode, date, time) VALUES(";
-    sql += "\"" +data.student_id+ "\",";
-    sql += "\"" +data.first_name+ "\",";
-    sql += "\"" +data.last_name+ "\",";
-    sql += "\"" +data.phone+ "\",";
-    sql += "\"" +data.phone2+ "\",";
-    sql += "\"" +data.address+ "\",";
-    sql += "\"" +data.address2+ "\",";
-    sql += "\"" +data.city+ "\",";
-    sql += "\"" +data.zip+ "\",";
-    sql += "\"" +data.state+ "\",";
-    sql += "\"" +data.date+ "\",";
-    sql += "\"" +data.time+ "\");";
+    var sql = "SELECT provider_id FROM Providers WHERE name=\"" + data.provider + "\"",
+        provID;
     connection.query(sql, function(err,rows,fields) {
-      if(err) { io.emit('info', err);console.log(err); }
-      else {
-        io.emit('registration-confirmation', rows);
-        console.log("Registration Response Recieved By Server");
-      }
+      console.log("1 "+ rows);
+      if(err) console.log(err);
+      else provID = rows[0].provider_id;
+      console.log("2 "+provID);
+      sql = "INSERT INTO Parties (student_id, first_name, last_name, phone, phone2, provider, address, address2, city, state, zipcode, date, time) VALUES(";
+      sql += "\"" +data.student_id+ "\",";
+      sql += "\"" +data.first_name+ "\",";
+      sql += "\"" +data.last_name+ "\",";
+      sql += "\"" +data.phone+ "\",";
+      sql += "\"" +data.phone2+ "\",";
+      sql += "\"" +provID+ "\",";
+      sql += "\"" +data.address+ "\",";
+      sql += "\"" +data.address2+ "\",";
+      sql += "\"" +data.city+ "\",";
+      sql += "\"" +data.zip+ "\",";
+      sql += "\"" +data.state+ "\",";
+      sql += "\"" +data.date+ "\",";
+      sql += "\"" +data.time+ "\");";
+      connection.query(sql, function(err,rows,fields) {
+        if(err) { io.emit('info', err);console.log(err); }
+        else {
+          io.emit('registration-confirmation', rows);  
+          console.log("Registration Response Recieved By Server");
+         }
+      });
     });
   });
 
@@ -106,6 +114,7 @@ io.on('connection', function(socket) {
     });
     console.log("Police Response Sent!"); 
   });
+
 });
 //send page to address on req. to default directory
   app.use(express.static(__dirname + '/public'));

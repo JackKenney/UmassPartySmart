@@ -23,18 +23,19 @@ socket.on('query-response', function( reply ) {
 
 $(document).ready( function () {
   //FIELDS:
-  var firstNameIn = $(document.getElementById('first_name')),
-      lastNameIn = $(document.getElementById('last_name')),
-      studentIn = $(document.getElementById('student_id')),
-      phoneIn = $(document.getElementById('phone_number')),
-      phoneIn2 = $(document.getElementById('phone_number2')),
-      addressIn = $(document.getElementById('address')),
-      address2In = $(document.getElementById('address2')),
-      cityIn = $(document.getElementById('city')),
-      stateIn = $(document.getElementById('state')),
-      zipIn = $(document.getElementById('zipcode')),
-      dateIn = $(document.getElementById('date')),
-      timeIn = $(document.getElementById('time')),
+  var firstName = $(document.getElementById('first_name')),
+      lastName = $(document.getElementById('last_name')),
+      student = $(document.getElementById('student_id')),
+      phone = $(document.getElementById('phone_number')),
+      phone2 = $(document.getElementById('phone_number2')),
+      provider = $(document.getElementById('provider_options')),
+      address = $(document.getElementById('address')),
+      address2 = $(document.getElementById('address2')),
+      city = $(document.getElementById('city')),
+      state = $(document.getElementById('state')),
+      zip = $(document.getElementById('zipcode')),
+      date = $(document.getElementById('date')),
+      time = $(document.getElementById('time')),
 
       submitButton = $(document.getElementById('submit')),
       
@@ -44,18 +45,19 @@ $(document).ready( function () {
   submitButton.on('click', function() {  
     console.log('Submit Button Clicked');
     var data = { 
-          'first_name':firstNameIn.val(),
-          'last_name':lastNameIn.val(),
-          'student_id':studentIn.val(),
-          'phone':phoneIn.val(),
-          'phone2':phoneIn2.val(),
-          'address':addressIn.val().toLowerCase(),
-          'address2':address2In.val().toLowerCase(),
-          'city':cityIn.val().toLowerCase(),
-          'state':stateIn.val().toLowerCase(),
-          'zip':zipIn.val(),
-          'date':dateIn.val(),
-          'time':timeIn.val()
+          'first_name':firstName.val().toLowerCase(),
+          'last_name':lastName.val().toLowerCase(),
+          'student_id':student.val().toLowerCase(),
+          'phone':phone.val().toLowerCase(),
+          'phone2':phone2.val().toLowerCase(),
+          'provider':provider.val().toLowerCase(),
+          'address':address.val().toLowerCase(),
+          'address2':address2.val().toLowerCase(),
+          'city':city.val().toLowerCase(),
+          'state':state.val().toLowerCase(),
+          'zip':zip.val(),
+          'date':date.val(),
+          'time':time.val()
         };
     console.log(data);
     socket.emit('registration',data);
@@ -75,12 +77,11 @@ $(document).ready( function () {
       pState = $(document.getElementById('pstate')),
       pZip = $(document.getElementById('pzipcode')),
     
-      pSubmit = $(document.getElementById('psubmit')),
-
-      returnName = $(document.getElementById('returnName')),
-      returnAddress = $(document.getElementById('returnAddress'));
+      pSubmit = $(document.getElementById('psubmit'));
 
   pSubmit.on('click', function() {
+    var div = $(document.getElementById('returnTable'));
+    div.children().remove();
     console.log("Police Submit Button Clicked!");
     var data = {
           'address':pAddress.val().toLowerCase(),
@@ -89,15 +90,42 @@ $(document).ready( function () {
           'state':pState.val().toLowerCase(),
           'zip':pZip.val()
         };
+    console.log("Police Query Submitted");
     console.log(data);
     socket.emit('police-query', data);
     console.log("Police Query Submitted");
   });
-  socket.on('police-response', function(data) {
+  socket.on('police-response', function(data) { // { first_name:"sally", phone:6, phone2:2345 }
     console.log(data);
-    for(int i=0; i<data.length; i++) {
-      
+    data = data.rows;
+    var table = $(document.createElement('table')),
+        tblBody=$(document.createElement('tbody'));
+    for(var r=-1;r<data.length;r++) {
+      var row = document.createElement('tr');
+      for(var c=0;c<3;c++) {
+        var cell = document.createElement('td'),
+            cellText;
+        switch (c) {
+          case 0: 
+            if(r<0)  cellText = document.createTextNode("First Name");
+            else cellText = document.createTextNode(data[r].first_name);
+            break;
+          case 1:
+            if(r<0)  cellText = document.createTextNode("Phone Number");
+            else cellText = document.createTextNode(data[r].phone);
+            break;
+          case 2:
+            if(r<0)  cellText = document.createTextNode("Additional Phone");
+            else cellText = document.createTextNode(data[r].phone2);
+            break;
+        }
+        cell.appendChild(cellText);
+        row.appendChild(cell);
+      }
+      tblBody.append(row);
     }
+    table.append(tblBody);
+    $(document.getElementById('returnTable')).append(table);
 
   });
 
