@@ -1,7 +1,13 @@
 {
   "name": "express-website",
   "version": "0.0.1",
-  "bin": { "express-website": "./" },
+  "bin": {
+    "express-website": "./"
+  },
   "private": false,
-  "dependencies": { "express": "4.9.4", "mysql": "~2.3.2"}
+  "dependencies": {
+    "express": "4.9.4",
+    "mysql": "~2.3.2",
+    "node-mandrill": "~1.0.1"
+  }
 }
