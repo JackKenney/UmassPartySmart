@@ -10,11 +10,20 @@
     <script src="/app.js"></script>
   </head>
   <body>
+  <div id='cssmenu'>
+  <ul>
+  <li class = 'active'><a href="policeform.html">Police Form</a></li>
+  <li class = 'active'><a href="index.html">Registration Form</a></li>
+  </ul>
+  </div>
     <br>
     <div id="postForm">
+    <p>If you'd like to tell a party nearby to quiet down, please fill out your address(or allow your browser to get your location) and the party's address.</p>
+          <h5 class = "error">All fields marked with an asterisk(*) are required</h5>
+          <br>
      <legend>Complaint Form</legend>
      <br>
-     Your Address:
+     <font color="red">*</font>Your Address:
       <br>
       <input id="yaddress" type="text" maxlength="200" placeholder="Address Line 1" name="Address" required/>
       <br>
@@ -27,7 +36,7 @@
       <input id="yzipcode" type="text" maxlength="15" placeholder="Zipcode" name="Zipcode" required/>
       <br>
       <br>
-     Address of Party:
+     <font color="red">*</font>Address of Party:
       <br>
       <input id="partyaddress" type="text" placeholder="Address Line 1" name ="Address" required/>
       <br>
@@ -41,6 +50,7 @@
       <br>
       <br>
       <input id="ysubmit" class="button" type="submit" value="Submit">
+      <br>
     </div>
     <br>
     <br>
