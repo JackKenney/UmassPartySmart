@@ -8,9 +8,18 @@
     <script src="/socket.io/socket.io.js"></script>
   </head>
   <body>
+   <div id='cssmenu'>
+  <ul>
+  <li class = 'active'><a href="complaintform.html">Complaint Form</a></li>
+  <li class = 'active'><a href="index.html">Registration Form</a></li>
+  </ul>
+  </div>
+        <h5 class = "error">All fields marked with an asterisk(*) are required</h5>
+        <br>
+  <p>Enter the address of the party to receive the name and the number of the home owner.</p>
     <br>
     <div id="postForm">
-     <legend>Address of Party</legend>
+     <font color="red">*</font>Address of Party
      <br>
       <br>
       <input id="paddress" type="text" maxlength="200" placeholder="Address Line 1" name="Address"/>
@@ -24,6 +33,7 @@
       <input id="pzipcode" type="text" maxlength="5" placeholder="Zipcode" name="Zipcode"/>
       <br>
       <input id="psubmit" class="button" type="submit" value="Submit">
+      <br>
     </div>
     <br>
     <div id="returnTable"></div>
